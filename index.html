@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html ng-app="crudApp">
+
+<head>
+    <title>AngularJS IndexedDB CRUD Example</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="app.js"></script>
+
+</head>
+
+<body>
+    <div ng-controller="MainController as vm">
+        <h1> IndexedDB </h1>
+
+        <form ng-submit="vm.addRecord()">
+            <label>Name:</label>
+            <input type="text" ng-model="vm.newRecord.name" required>
+            <label>Email:</label>
+            <input type="email" ng-model="vm.newRecord.email" required>
+            <button type="submit">Add Record</button>
+        </form>
+
+        <ul>
+            <li ng-repeat="record in vm.records">
+                {{record.name}} - {{record.email}}
+                <button ng-click="vm.deleteRecord(record.id)">Delete</button>
+            </li>
+        </ul>
+    </div>
+</body>
+
+</html>
